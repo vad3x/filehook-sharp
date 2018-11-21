@@ -1,7 +1,7 @@
 import express from 'express';
 import { middleware as cache } from 'apicache';
 
-import { useFilehookStyles, Options } from '../filehook-middleware';
+import { useFilehookStyles, Options } from '../index';
 
 import { Sharp } from 'sharp';
 

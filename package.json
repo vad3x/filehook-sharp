@@ -1,7 +1,9 @@
 {
   "name": "filehook-sharp",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Node.js Express app for filehook lib",
+  "main": "dist/index.js",
+  "types" : "dist/index.d.ts",
   "scripts": {
     "start": "npm run serve",
     "build": "npm run build-ts && npm run tslint",
@@ -13,8 +15,15 @@
     "serve-debug": "nodemon --inspect dist/sample/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vad3x/filehook-sharp.git"
+  },
+  "author": "Vadim Orekhov",
+  "license": "MIT",
   "dependencies": {
     "apicache": "^1.2.3",
     "express": "^4.16.4",

@@ -10,8 +10,6 @@ export interface Options {
     rootPath: string;
 }
 
-// IRouterMatcher<T>
-
 export function useFilehookStyles(options: Options) {
     return async function middleware(req: Request, res: Response, next: NextFunction) {
         // Extract the query-parameter
