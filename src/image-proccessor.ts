@@ -1,4 +1,5 @@
-import { createReadStream } from 'fs';
+import { Stream } from 'stream';
+
 import sharp, { Sharp, FitEnum } from 'sharp';
 
 export interface Style {
@@ -9,8 +10,7 @@ export interface Style {
     transform?: (transformer: Sharp, width: number, height: number, format?: string) => Sharp;
 }
 
-export default function proccess(path: string, style: Style) {
-    const readStream = createReadStream(path);
+export default function proccess(readStream: Stream, style: Style) {
     let sharpTransformer = sharp();
 
     if (style.width || style.height) {
