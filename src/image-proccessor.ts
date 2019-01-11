@@ -1,6 +1,6 @@
 import { Stream } from 'stream';
 
-import sharp, { Sharp, FitEnum } from 'sharp';
+import sharp, { Sharp, FitEnum, OutputOptions, JpegOptions, PngOptions, WebpOptions, TiffOptions } from 'sharp';
 
 export interface Style {
     width?: number;
@@ -8,6 +8,7 @@ export interface Style {
     fit?: keyof FitEnum;
     format?: string;
     transform?: (transformer: Sharp, width: number, height: number, format?: string) => Sharp;
+    formatOptions?: OutputOptions | JpegOptions | PngOptions | WebpOptions | TiffOptions;
 }
 
 export default function proccess(readStream: Stream, style: Style) {
@@ -22,7 +23,7 @@ export default function proccess(readStream: Stream, style: Style) {
     }
 
     if (style.format) {
-        sharpTransformer = sharpTransformer.toFormat(style.format);
+        sharpTransformer = sharpTransformer.toFormat(style.format, style.formatOptions);
     }
 
     if (style.transform) {
