@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { Request, Response, NextFunction, IRouterMatcher } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import proccess, { Style } from './image-proccessor';
 import { IStorage } from './storage';
 
@@ -24,8 +24,6 @@ export function useFilehookStyles(options: Options) {
         }
 
         const relativePath = path.join(blobKey.substring(0, 2), blobKey.substring(2, 4), blobKey);
-
-        console.log(relativePath);
 
         if (!await options.storage.exists(relativePath)) {
             console.error(`File: '${relativePath}' is not found`);
